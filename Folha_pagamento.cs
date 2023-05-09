@@ -26,11 +26,11 @@ namespace FolhaPagamento
         {
             double salarioBruto, inss, irrf, salarioLiquido, descontos, adicionais;
 
-            salarioBruto = double.Parse(txt_salariobruto.Text);
+            salarioBruto = double.Parse(txt_salariobruto.Text.Replace("R$", ""));
 
-            descontos = double.Parse(txt_descontos.Text);
+            descontos = double.Parse(txt_descontos.Text.Replace("R$", ""));
 
-            adicionais = double.Parse(txt_adicionais.Text);
+            adicionais = double.Parse(txt_adicionais.Text.Replace("R$", ""));
 
 
 
