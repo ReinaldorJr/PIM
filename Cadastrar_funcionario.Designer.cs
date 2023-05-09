@@ -50,12 +50,14 @@
             btn_cadastrar = new Button();
             btn_cancelar = new Button();
             cbx_cargo = new ComboBox();
-            lbox_funcionarios = new ListBox();
             txt_cpf_funcionario = new MaskedTextBox();
             txt_cep_funcionario = new MaskedTextBox();
             btn_excluir = new Button();
             btn_atualizar = new Button();
             txt_salario_funcionario = new MaskedTextBox();
+            listFuncionarios = new ListView();
+            boxSenha = new TextBox();
+            label12 = new Label();
             SuspendLayout();
             // 
             // txt_nome_funcionario
@@ -63,7 +65,7 @@
             txt_nome_funcionario.Location = new Point(98, 52);
             txt_nome_funcionario.Margin = new Padding(4, 5, 4, 5);
             txt_nome_funcionario.Name = "txt_nome_funcionario";
-            txt_nome_funcionario.Size = new Size(699, 33);
+            txt_nome_funcionario.Size = new Size(474, 29);
             txt_nome_funcionario.TabIndex = 2;
             // 
             // txt_rua_funcionario
@@ -72,7 +74,7 @@
             txt_rua_funcionario.Location = new Point(34, 354);
             txt_rua_funcionario.Margin = new Padding(4, 5, 4, 5);
             txt_rua_funcionario.Name = "txt_rua_funcionario";
-            txt_rua_funcionario.Size = new Size(796, 33);
+            txt_rua_funcionario.Size = new Size(796, 29);
             txt_rua_funcionario.TabIndex = 7;
             // 
             // txt_bairro_funcionario
@@ -81,7 +83,7 @@
             txt_bairro_funcionario.Location = new Point(34, 284);
             txt_bairro_funcionario.Margin = new Padding(4, 5, 4, 5);
             txt_bairro_funcionario.Name = "txt_bairro_funcionario";
-            txt_bairro_funcionario.Size = new Size(959, 33);
+            txt_bairro_funcionario.Size = new Size(959, 29);
             txt_bairro_funcionario.TabIndex = 8;
             txt_bairro_funcionario.Tag = "";
             // 
@@ -91,7 +93,7 @@
             label1.Location = new Point(98, 22);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(71, 25);
+            label1.Size = new Size(59, 21);
             label1.TabIndex = 9;
             label1.Text = "NOME:";
             // 
@@ -101,7 +103,7 @@
             label2.Location = new Point(37, 22);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(34, 25);
+            label2.Size = new Size(28, 21);
             label2.TabIndex = 10;
             label2.Text = "ID:";
             // 
@@ -111,7 +113,7 @@
             label3.Location = new Point(808, 105);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(114, 25);
+            label3.Size = new Size(95, 21);
             label3.TabIndex = 11;
             label3.Text = "DATA NASC:";
             // 
@@ -121,7 +123,7 @@
             label4.Location = new Point(420, 102);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(132, 25);
+            label4.Size = new Size(110, 21);
             label4.TabIndex = 12;
             label4.Text = "ESTADO CIVIL:";
             // 
@@ -131,7 +133,7 @@
             label5.Location = new Point(37, 105);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(78, 25);
+            label5.Size = new Size(66, 21);
             label5.TabIndex = 13;
             label5.Text = "CARGO:";
             // 
@@ -141,7 +143,7 @@
             label6.Location = new Point(34, 254);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
-            label6.Size = new Size(80, 25);
+            label6.Size = new Size(68, 21);
             label6.TabIndex = 14;
             label6.Text = "BAIRRO:";
             // 
@@ -151,7 +153,7 @@
             label7.Location = new Point(610, 102);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(102, 25);
+            label7.Size = new Size(85, 21);
             label7.TabIndex = 15;
             label7.Text = "TELEFONE:";
             // 
@@ -161,7 +163,7 @@
             txt_idfuncionario.Location = new Point(37, 52);
             txt_idfuncionario.Margin = new Padding(4, 5, 4, 5);
             txt_idfuncionario.Name = "txt_idfuncionario";
-            txt_idfuncionario.Size = new Size(55, 33);
+            txt_idfuncionario.Size = new Size(55, 29);
             txt_idfuncionario.TabIndex = 16;
             // 
             // label8
@@ -170,7 +172,7 @@
             label8.Location = new Point(805, 22);
             label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
-            label8.Size = new Size(48, 25);
+            label8.Size = new Size(40, 21);
             label8.TabIndex = 17;
             label8.Text = "CPF:";
             // 
@@ -181,7 +183,7 @@
             dtp_dt_nasc.Margin = new Padding(4, 5, 4, 5);
             dtp_dt_nasc.MaxDate = new DateTime(2023, 4, 13, 13, 21, 33, 0);
             dtp_dt_nasc.Name = "dtp_dt_nasc";
-            dtp_dt_nasc.Size = new Size(182, 30);
+            dtp_dt_nasc.Size = new Size(182, 26);
             dtp_dt_nasc.TabIndex = 21;
             dtp_dt_nasc.Value = new DateTime(2023, 4, 13, 0, 0, 0, 0);
             // 
@@ -191,7 +193,7 @@
             cbx_est_civil.Location = new Point(420, 132);
             cbx_est_civil.Margin = new Padding(4, 5, 4, 5);
             cbx_est_civil.Name = "cbx_est_civil";
-            cbx_est_civil.Size = new Size(184, 33);
+            cbx_est_civil.Size = new Size(184, 29);
             cbx_est_civil.TabIndex = 22;
             // 
             // txt_telefone_funcionario
@@ -201,7 +203,7 @@
             txt_telefone_funcionario.Margin = new Padding(4, 5, 4, 5);
             txt_telefone_funcionario.Mask = "000000000";
             txt_telefone_funcionario.Name = "txt_telefone_funcionario";
-            txt_telefone_funcionario.Size = new Size(134, 33);
+            txt_telefone_funcionario.Size = new Size(134, 29);
             txt_telefone_funcionario.TabIndex = 23;
             txt_telefone_funcionario.TextAlign = HorizontalAlignment.Center;
             // 
@@ -212,7 +214,7 @@
             txt_ddd_funcionario.Margin = new Padding(4, 5, 4, 5);
             txt_ddd_funcionario.Mask = "00";
             txt_ddd_funcionario.Name = "txt_ddd_funcionario";
-            txt_ddd_funcionario.Size = new Size(42, 33);
+            txt_ddd_funcionario.Size = new Size(42, 29);
             txt_ddd_funcionario.TabIndex = 24;
             txt_ddd_funcionario.TextAlign = HorizontalAlignment.Center;
             // 
@@ -222,7 +224,7 @@
             label9.Location = new Point(34, 324);
             label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
-            label9.Size = new Size(52, 25);
+            label9.Size = new Size(44, 21);
             label9.TabIndex = 27;
             label9.Text = "RUA:";
             // 
@@ -232,7 +234,7 @@
             label10.Location = new Point(838, 324);
             label10.Margin = new Padding(4, 0, 4, 0);
             label10.Name = "label10";
-            label10.Size = new Size(49, 25);
+            label10.Size = new Size(40, 21);
             label10.TabIndex = 28;
             label10.Text = "CEP:";
             // 
@@ -242,7 +244,7 @@
             label11.Location = new Point(290, 105);
             label11.Margin = new Padding(4, 0, 4, 0);
             label11.Name = "label11";
-            label11.Size = new Size(90, 25);
+            label11.Size = new Size(76, 21);
             label11.TabIndex = 31;
             label11.Text = "SALÁRIO:";
             // 
@@ -274,19 +276,8 @@
             cbx_cargo.Location = new Point(37, 132);
             cbx_cargo.Margin = new Padding(4, 5, 4, 5);
             cbx_cargo.Name = "cbx_cargo";
-            cbx_cargo.Size = new Size(244, 33);
+            cbx_cargo.Size = new Size(244, 29);
             cbx_cargo.TabIndex = 36;
-            // 
-            // lbox_funcionarios
-            // 
-            lbox_funcionarios.FormattingEnabled = true;
-            lbox_funcionarios.ItemHeight = 25;
-            lbox_funcionarios.Location = new Point(34, 448);
-            lbox_funcionarios.Margin = new Padding(2);
-            lbox_funcionarios.Name = "lbox_funcionarios";
-            lbox_funcionarios.Size = new Size(959, 229);
-            lbox_funcionarios.TabIndex = 37;
-            lbox_funcionarios.MouseDoubleClick += lbox_funcionarios_MouseDoubleClick;
             // 
             // txt_cpf_funcionario
             // 
@@ -295,7 +286,7 @@
             txt_cpf_funcionario.Margin = new Padding(4, 5, 4, 5);
             txt_cpf_funcionario.Mask = "00000000000";
             txt_cpf_funcionario.Name = "txt_cpf_funcionario";
-            txt_cpf_funcionario.Size = new Size(186, 34);
+            txt_cpf_funcionario.Size = new Size(186, 30);
             txt_cpf_funcionario.TabIndex = 38;
             txt_cpf_funcionario.TextAlign = HorizontalAlignment.Center;
             // 
@@ -305,13 +296,12 @@
             txt_cep_funcionario.Margin = new Padding(4, 5, 4, 5);
             txt_cep_funcionario.Mask = "00000000";
             txt_cep_funcionario.Name = "txt_cep_funcionario";
-            txt_cep_funcionario.Size = new Size(152, 33);
+            txt_cep_funcionario.Size = new Size(152, 29);
             txt_cep_funcionario.TabIndex = 39;
             txt_cep_funcionario.TextAlign = HorizontalAlignment.Center;
             // 
             // btn_excluir
             // 
-            btn_excluir.Enabled = false;
             btn_excluir.Location = new Point(37, 696);
             btn_excluir.Margin = new Padding(4, 5, 4, 5);
             btn_excluir.Name = "btn_excluir";
@@ -340,21 +330,50 @@
             txt_salario_funcionario.Margin = new Padding(4, 5, 4, 5);
             txt_salario_funcionario.Mask = "$000000000";
             txt_salario_funcionario.Name = "txt_salario_funcionario";
-            txt_salario_funcionario.Size = new Size(121, 33);
+            txt_salario_funcionario.Size = new Size(121, 29);
             txt_salario_funcionario.TabIndex = 43;
             txt_salario_funcionario.TextAlign = HorizontalAlignment.Center;
             // 
+            // listFuncionarios
+            // 
+            listFuncionarios.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            listFuncionarios.Location = new Point(34, 391);
+            listFuncionarios.Name = "listFuncionarios";
+            listFuncionarios.Size = new Size(959, 282);
+            listFuncionarios.TabIndex = 44;
+            listFuncionarios.UseCompatibleStateImageBehavior = false;
+            // 
+            // boxSenha
+            // 
+            boxSenha.Location = new Point(580, 53);
+            boxSenha.Margin = new Padding(4, 5, 4, 5);
+            boxSenha.Name = "boxSenha";
+            boxSenha.Size = new Size(217, 29);
+            boxSenha.TabIndex = 46;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(580, 23);
+            label12.Margin = new Padding(4, 0, 4, 0);
+            label12.Name = "label12";
+            label12.Size = new Size(56, 21);
+            label12.TabIndex = 45;
+            label12.Text = "Senha:";
+            // 
             // Cadastrar_funcionario
             // 
-            AutoScaleDimensions = new SizeF(11F, 25F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1019, 764);
+            Controls.Add(boxSenha);
+            Controls.Add(label12);
+            Controls.Add(listFuncionarios);
             Controls.Add(txt_salario_funcionario);
             Controls.Add(btn_atualizar);
             Controls.Add(btn_excluir);
             Controls.Add(txt_cep_funcionario);
             Controls.Add(txt_cpf_funcionario);
-            Controls.Add(lbox_funcionarios);
             Controls.Add(cbx_cargo);
             Controls.Add(btn_cancelar);
             Controls.Add(btn_cadastrar);
@@ -383,7 +402,6 @@
             Name = "Cadastrar_funcionario";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastro Funcionario";
-            Load += Cadastrar_funcionario_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -414,11 +432,13 @@
         private Button btn_cadastrar;
         private Button btn_cancelar;
         private ComboBox cbx_cargo;
-        private ListBox lbox_funcionarios;
         private MaskedTextBox txt_cpf_funcionario;
         private MaskedTextBox txt_cep_funcionario;
         private Button btn_excluir;
         private Button btn_atualizar;
         private MaskedTextBox txt_salario_funcionario;
+        private ListView listFuncionarios;
+        private TextBox boxSenha;
+        private Label label12;
     }
 }

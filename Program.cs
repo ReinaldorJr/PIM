@@ -24,7 +24,7 @@ namespace FolhaPagamento
             }
 
             ApplicationConfiguration.Initialize();
-            Application.Run(new Menu());
+            Application.Run(new Login());
         }
     }
 }

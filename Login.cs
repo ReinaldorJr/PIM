@@ -15,41 +15,25 @@ namespace FolhaPagamento
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (txtSenha.Text != "" && txtUsuario.Text != "")
+            try
             {
-                //Criando conex�o com o BD
-                string strConexao = "server=127.0.0.1;uid=root;pwd=0000;database=folhadepagamento";
-                MySqlConnection conexao = new MySqlConnection(strConexao);
-                var comand = conexao.CreateCommand();
-                MySqlCommand query = new MySqlCommand("select count(*) from tbFuncionario where cpf = '" + txtUsuario.Text + "'   and Senha = '" + txtSenha.Text + "'", conexao);
-                conexao.Open();
-                DataTable dataTable = new DataTable();
-                MySqlDataAdapter da = new MySqlDataAdapter(query);
-                da.Fill(dataTable);
-
-                foreach (DataRow list in dataTable.Rows)
+                if (loginAuth(txtUsuario.Text, txtSenha.Text))
                 {
-                    if (Convert.ToInt32(list.ItemArray[0]) > 0)
-                    {
-                        MessageBox.Show("Usu�rio validado", "Valida��o", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        Menu menu = new Menu();
-                        menu.Show();
-                        this.Hide();
+                    MessageBox.Show("Usuário validado", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Menu menu = new Menu();
+                    menu.Show();
+                    this.Hide();
 
-                    }
-                    else
-                    {
-                        MessageBox.Show("Usu�rio Inv�lido", "Valida��o", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
                 }
-                conexao.Close();
-
-            }
-            else
+                else
+                {
+                    MessageBox.Show("Preencha os campos. ", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtUsuario.Focus();
+                }
+            }catch(Exception ex)
             {
-                MessageBox.Show("Preencha os campos. ", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                txtUsuario.Focus();
+                MessageBox.Show(ex.ToString());
             }
 
 
@@ -58,6 +42,35 @@ namespace FolhaPagamento
 
         }
 
+        private bool loginAuth(string usuario, string senha)
+        {
+            try
+            {
+                //Criando conex�o com o BD
+                string strConexao = "server=127.0.0.1;uid=root;pwd=0000;database=folhadepagamento";
+                MySqlConnection conexao = new MySqlConnection(strConexao);
+                conexao.Open();
+                var comand = conexao.CreateCommand();
+                comand.CommandText = "select * from tbFuncionario;";
+                MySqlDataReader reader = comand.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    if (reader["login"].ToString().ToLower() == usuario.ToLower() && reader["senha"].ToString() == senha)
+                    {
+                        return true;
+                    }
+
+                }
+                return false;
+                conexao.Close();
+            }
+            catch
+            { 
+                MessageBox.Show("Ocorreu algum erro, tente novamente", "Erro");
+                return false;
+            }
+        }
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 

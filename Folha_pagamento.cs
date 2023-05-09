@@ -18,6 +18,8 @@ namespace FolhaPagamento
         public Folha_pagamento()
         {
             InitializeComponent();
+            PopularGrade();
+            GerarGrade();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -214,10 +216,67 @@ namespace FolhaPagamento
             conexao.Close();
 
         }
+        private void GerarGrade()
+        {
+            listFolhaPagamento.Columns.Add("Id", 40).TextAlign = HorizontalAlignment.Center;
+            listFolhaPagamento.Columns.Add("Nome", 280).TextAlign = HorizontalAlignment.Center;
+            listFolhaPagamento.Columns.Add("Cargo", 200).TextAlign = HorizontalAlignment.Center;
+            listFolhaPagamento.Columns.Add("CPF", 165).TextAlign = HorizontalAlignment.Center;
+            listFolhaPagamento.View = View.Details;
 
+            listFolhaPagamento.FullRowSelect = true;
+            listFolhaPagamento.GridLines = true;
+            listFolhaPagamento.CheckBoxes = true;
+        }
+
+        public void PopularGrade()
+        {
+            String[] item = new string[4];
+
+            var listFunc = queryFunc();
+            foreach (ListFunc funcionario in listFunc)
+            {
+                item[0] = funcionario.Id.ToString();
+                item[1] = funcionario.Nome;
+                item[2] = funcionario.Cargo;
+                item[3] = funcionario.Cpf;
+                listFolhaPagamento.Items.Add(new ListViewItem(item));
+            }
+        }
+        private List<ListFunc> queryFunc()
+        {
+            try
+            {
+                ConnectDatabase db = new ConnectDatabase();
+                MySqlCommand sqlCommand = new MySqlCommand("SELECT * FROM tbfuncionario", db.connect());
+                MySqlDataReader reader = sqlCommand.ExecuteReader();
+                var listFuncionarios = new List<ListFunc>();
+
+                while (reader.Read())
+                {
+
+                    if (reader["ativo"].ToString().Equals("True"))
+                    {
+                        listFuncionarios.Add(new ListFunc(reader["nome"].ToString(), reader["Cpf"].ToString(), reader["cargo"].ToString(), reader["idFunc"].ToString()));
+                    }
+
+                }
+                return listFuncionarios;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("error ===> ", ex);
+                return null;
+            }
+        }
         public void msgcampovazio()
         {
             MessageBox.Show("É obrigatótio o preenchimento do campo.");
+        }
+
+        private void Folha_pagamento_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

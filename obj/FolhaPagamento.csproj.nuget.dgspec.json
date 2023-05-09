@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Biel_\\source\\repos\\PIM\\folhaDePagamento\\FolhaPagamento.csproj": {}
+    "C:\\Users\\samue\\source\\repos\\PIM-ADS\\FolhaPagamento.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Biel_\\source\\repos\\PIM\\folhaDePagamento\\FolhaPagamento.csproj": {
+    "C:\\Users\\samue\\source\\repos\\PIM-ADS\\FolhaPagamento.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Biel_\\source\\repos\\PIM\\folhaDePagamento\\FolhaPagamento.csproj",
+        "projectUniqueName": "C:\\Users\\samue\\source\\repos\\PIM-ADS\\FolhaPagamento.csproj",
         "projectName": "FolhaPagamento",
-        "projectPath": "C:\\Users\\Biel_\\source\\repos\\PIM\\folhaDePagamento\\FolhaPagamento.csproj",
-        "packagesPath": "C:\\Users\\Biel_\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Biel_\\source\\repos\\PIM\\folhaDePagamento\\obj\\",
+        "projectPath": "C:\\Users\\samue\\source\\repos\\PIM-ADS\\FolhaPagamento.csproj",
+        "packagesPath": "C:\\Users\\samue\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\samue\\source\\repos\\PIM-ADS\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Biel_\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\samue\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

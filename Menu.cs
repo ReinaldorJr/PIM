@@ -77,6 +77,9 @@ namespace FolhaPagamento
 
         }
 
+        private void painel_menu_Paint(object sender, PaintEventArgs e)
+        {
 
+        }
     }
 }

@@ -33,7 +33,8 @@ namespace FolhaPagamento
             cbx_cargo.SelectedIndex = 0;
             cbx_cargo.Items.Add("Departamento Pessoal");
             cbx_cargo.Items.Add("Gerente");
-
+            GerarGrade();
+            PopularGrade();
         }
 
 
@@ -66,7 +67,6 @@ namespace FolhaPagamento
                 {
                     f.cpf_funcionario = txt_cpf_funcionario.Text;
                     f.login = f.cpf_funcionario;
-                    f.senha = f.cpf_funcionario;
 
                 }
                 else
@@ -76,7 +76,18 @@ namespace FolhaPagamento
                     return;
                 }
             }
+            if (boxSenha.Text != "")
+            {
 
+               f.senha = boxSenha.Text;
+                
+            }
+            else
+            {
+                msgcampovazio();
+                boxSenha.Focus();
+                return;
+            }
             if (txt_nome_funcionario.Text == "")
             {
                 msgcampovazio();
@@ -249,7 +260,7 @@ namespace FolhaPagamento
 
             MessageBox.Show("Cadastro efetuado com sucesso.", "", MessageBoxButtons.OK);
 
-            lbox_funcionarios.Enabled = true;
+
         }
         private int queryDatabase()
         {
@@ -276,7 +287,7 @@ namespace FolhaPagamento
             comm.CommandText = "INSERT INTO tbsalario(idFunc, cpf, salarioBase) VALUES(@idFunc, @cpf, @salarioBase);";
             comm.Parameters.AddWithValue("@idFunc", queryDatabase());
             comm.Parameters.AddWithValue("@cpf", txt_cpf_funcionario.Text);
-            comm.Parameters.AddWithValue("@salarioBase", txt_salario_funcionario.Text);
+            comm.Parameters.AddWithValue("@salarioBase", txt_salario_funcionario.Text.Replace("R$", ""));
 
             comm.ExecuteNonQuery();
         }
@@ -320,258 +331,295 @@ namespace FolhaPagamento
         private void btn_atualizar_Click(object sender, EventArgs e)
         {
 
-            int indice = lbox_funcionarios.SelectedIndex;
-            Funcionario f = funcionarios[indice];
+            //int indice = lbox_funcionarios.SelectedIndex;
+            //Funcionario f = funcionarios[indice];
 
 
-            if (txt_cpf_funcionario.Text == "")
-            {
-                msgcampovazio();
-                txt_cpf_funcionario.Focus();
-                return;
-            }
-            else
-            {
-                if (txt_cpf_funcionario.Text.Length == 11)
-                {
-                    f.cpf_funcionario = txt_cpf_funcionario.Text;
-                }
-                else
-                {
-                    msgcampovazio();
-                    txt_cpf_funcionario.Focus();
-                    return;
-                }
-            }
+            //if (txt_cpf_funcionario.Text == "")
+            //{
+            //    msgcampovazio();
+            //    txt_cpf_funcionario.Focus();
+            //    return;
+            //}
+            //else
+            //{
+            //    if (txt_cpf_funcionario.Text.Length == 11)
+            //    {
+            //        f.cpf_funcionario = txt_cpf_funcionario.Text;
+            //    }
+            //    else
+            //    {
+            //        msgcampovazio();
+            //        txt_cpf_funcionario.Focus();
+            //        return;
+            //    }
+            //}
 
-            if (txt_nome_funcionario.Text == "")
-            {
-                msgcampovazio();
-                txt_nome_funcionario.Focus();
-                return;
-            }
-            else
-            {
-                f.nome_funcionario = txt_nome_funcionario.Text;
-            }
+            //if (txt_nome_funcionario.Text == "")
+            //{
+            //    msgcampovazio();
+            //    txt_nome_funcionario.Focus();
+            //    return;
+            //}
+            //else
+            //{
+            //    f.nome_funcionario = txt_nome_funcionario.Text;
+            //}
 
-            if (txt_salario_funcionario.Text == "")
-            {
-                msgcampovazio();
-                txt_salario_funcionario.Focus();
-                return;
-            }
-            else
-            {
+            //if (txt_salario_funcionario.Text == "")
+            //{
+            //    msgcampovazio();
+            //    txt_salario_funcionario.Focus();
+            //    return;
+            //}
+            //else
+            //{
 
-            }
+            //}
 
-            if (txt_bairro_funcionario.Text == "")
-            {
-                msgcampovazio();
-                txt_bairro_funcionario.Focus();
-                return;
-            }
-            else
-            {
-                f.bairro_funcionario = txt_bairro_funcionario.Text;
-            }
+            //if (txt_bairro_funcionario.Text == "")
+            //{
+            //    msgcampovazio();
+            //    txt_bairro_funcionario.Focus();
+            //    return;
+            //}
+            //else
+            //{
+            //    f.bairro_funcionario = txt_bairro_funcionario.Text;
+            //}
 
-            if (txt_rua_funcionario.Text == "")
-            {
-                msgcampovazio();
-                txt_rua_funcionario.Focus();
-                return;
-            }
-            else
-            {
-                f.rua_funcionario = txt_rua_funcionario.Text;
-            }
+            //if (txt_rua_funcionario.Text == "")
+            //{
+            //    msgcampovazio();
+            //    txt_rua_funcionario.Focus();
+            //    return;
+            //}
+            //else
+            //{
+            //    f.rua_funcionario = txt_rua_funcionario.Text;
+            //}
 
-            if (txt_cep_funcionario.Text == "")
-            {
-                msgcampovazio();
-                txt_cep_funcionario.Focus();
-                return;
-            }
-            else
-            {
-                if (txt_cep_funcionario.Text.Length == 8)
-                {
-                    f.cep_funcionario = txt_cep_funcionario.Text;
-                }
-                else
-                {
-                    msgcampovazio();
-                    txt_cep_funcionario.Focus();
-                    return;
-                }
-            }
+            //if (txt_cep_funcionario.Text == "")
+            //{
+            //    msgcampovazio();
+            //    txt_cep_funcionario.Focus();
+            //    return;
+            //}
+            //else
+            //{
+            //    if (txt_cep_funcionario.Text.Length == 8)
+            //    {
+            //        f.cep_funcionario = txt_cep_funcionario.Text;
+            //    }
+            //    else
+            //    {
+            //        msgcampovazio();
+            //        txt_cep_funcionario.Focus();
+            //        return;
+            //    }
+            //}
 
-            if (txt_ddd_funcionario.Text == "")
-            {
-                msgcampovazio();
-                txt_ddd_funcionario.Focus();
-                return;
-            }
-            else
-            {
-                if (txt_ddd_funcionario.Text.Length == 2)
-                {
-                    f.ddd_funcionario = txt_ddd_funcionario.Text;
-                }
-                else
-                {
-                    msgcampovazio();
-                    txt_ddd_funcionario.Focus();
-                    return;
-                }
-            }
+            //if (txt_ddd_funcionario.Text == "")
+            //{
+            //    msgcampovazio();
+            //    txt_ddd_funcionario.Focus();
+            //    return;
+            //}
+            //else
+            //{
+            //    if (txt_ddd_funcionario.Text.Length == 2)
+            //    {
+            //        f.ddd_funcionario = txt_ddd_funcionario.Text;
+            //    }
+            //    else
+            //    {
+            //        msgcampovazio();
+            //        txt_ddd_funcionario.Focus();
+            //        return;
+            //    }
+            //}
 
-            if (txt_telefone_funcionario.Text == "")
-            {
-                msgcampovazio();
-                txt_telefone_funcionario.Focus();
-                return;
-            }
-            else
-            {
-                if (txt_telefone_funcionario.Text.Length == 9 || txt_telefone_funcionario.Text.Length == 8)
-                {
-                    f.telefone_funcionario = txt_telefone_funcionario.Text;
-                }
-                else
-                {
-                    msgcampovazio();
-                    txt_telefone_funcionario.Focus();
-                    return;
-                }
-            }
+            //if (txt_telefone_funcionario.Text == "")
+            //{
+            //    msgcampovazio();
+            //    txt_telefone_funcionario.Focus();
+            //    return;
+            //}
+            //else
+            //{
+            //    if (txt_telefone_funcionario.Text.Length == 9 || txt_telefone_funcionario.Text.Length == 8)
+            //    {
+            //        f.telefone_funcionario = txt_telefone_funcionario.Text;
+            //    }
+            //    else
+            //    {
+            //        msgcampovazio();
+            //        txt_telefone_funcionario.Focus();
+            //        return;
+            //    }
+            //}
 
-            if (cbx_est_civil.Text == "")
-            {
-                msgcampovazio();
-                cbx_est_civil.Focus();
-                return;
-            }
-            else
-            {
-                f.estado_civil_funcionario = cbx_est_civil.SelectedItem.ToString();
-            }
+            //if (cbx_est_civil.Text == "")
+            //{
+            //    msgcampovazio();
+            //    cbx_est_civil.Focus();
+            //    return;
+            //}
+            //else
+            //{
+            //    f.estado_civil_funcionario = cbx_est_civil.SelectedItem.ToString();
+            //}
 
-            if (dtp_dt_nasc.Text == "")
-            {
-                msgcampovazio();
-                dtp_dt_nasc.Focus();
-                return;
-            }
-            else
-            {
-                f.dt_nasc_funcionario = dtp_dt_nasc.Value;
-            }
+            //if (dtp_dt_nasc.Text == "")
+            //{
+            //    msgcampovazio();
+            //    dtp_dt_nasc.Focus();
+            //    return;
+            //}
+            //else
+            //{
+            //    f.dt_nasc_funcionario = dtp_dt_nasc.Value;
+            //}
 
-            if (cbx_cargo.Text == "")
-            {
-                msgcampovazio();
-                cbx_cargo.Focus();
-                return;
-            }
-            else
-            {
-                f.cargo = cbx_cargo.SelectedItem.ToString();
-            }
+            //if (cbx_cargo.Text == "")
+            //{
+            //    msgcampovazio();
+            //    cbx_cargo.Focus();
+            //    return;
+            //}
+            //else
+            //{
+            //    f.cargo = cbx_cargo.SelectedItem.ToString();
+            //}
 
 
 
-            limparcampos();
+            //limparcampos();
 
-            Listar();
+            //Listar();
 
-            MessageBox.Show("Cadastro atualizado com sucesso.", "", MessageBoxButtons.OK);
+            //MessageBox.Show("Cadastro atualizado com sucesso.", "", MessageBoxButtons.OK);
 
-            btn_cadastrar.Enabled = true;
-            btn_atualizar.Enabled = false;
+            //btn_cadastrar.Enabled = true;
+            //btn_atualizar.Enabled = false;
 
         }
         private void btn_excluir_Click(object sender, EventArgs e)
         {
 
 
-            DialogResult result = MessageBox.Show("Deseja remover os dados do funcionário selecionado?", "", MessageBoxButtons.OKCancel);
-
-            if (result == DialogResult.OK)
+            foreach (ListViewItem item in listFuncionarios.Items)
             {
-                int indice = lbox_funcionarios.SelectedIndex;
-                funcionarios.RemoveAt(indice);
-                Listar();
-                limparcampos();
-            }
-            else
-            {
+                if (item.Selected || item.Checked)
+                {
+                    ConnectDatabase connect = new ConnectDatabase();
+                    ListViewItem items = listFuncionarios.Items[item.Index];
+                    updateFunc(items.SubItems[0].Text);
+                    listFuncionarios.Items.RemoveAt(item.Index);
+                }
+
 
             }
+        }
+        private void updateFunc(string id)
+        {
+
+            ConnectDatabase db = new ConnectDatabase();
+            MySqlCommand comm = db.connect().CreateCommand();
+
+
+            comm.CommandText = "update tbfuncionario set ativo = false where idFunc = @idFunc;";
+            comm.Parameters.AddWithValue("@idFunc", id);
+            comm.ExecuteNonQuery();
         }
         private void lbox_funcionarios_MouseDoubleClick(object sender, MouseEventArgs e)
         {
 
-            if (lbox_funcionarios.SelectedIndex == -1)
-            {
-                return;
-            }
+            //if (lbox_funcionarios.SelectedIndex == -1)
+            //{
+            //    return;
+            //}
 
-            int id = ((Funcionario)lbox_funcionarios.SelectedItem).id_funcionario;
+            //int id = ((Funcionario)lbox_funcionarios.SelectedItem).id_funcionario;
 
-            ConnectDatabase db = new ConnectDatabase();
-            MySqlCommand comm = new MySqlCommand();
-            comm.Connection = db.connect();
+            //ConnectDatabase db = new ConnectDatabase();
+            //MySqlCommand comm = new MySqlCommand();
+            //comm.Connection = db.connect();
 
-            string sql = "SELECT * FROM tbfuncionario WHERE idFuncionario = @idFunc";
-            comm.Parameters.AddWithValue("@idFunc", id);
-            comm.CommandText = sql;
+            //string sql = "SELECT * FROM tbfuncionario WHERE idFuncionario = @idFunc";
+            //comm.Parameters.AddWithValue("@idFunc", id);
+            //comm.CommandText = sql;
 
-            MySqlDataReader reader = comm.ExecuteReader();
+            //MySqlDataReader reader = comm.ExecuteReader();
 
-            if (reader.Read())
-            {
-                txt_idfuncionario.Text = reader["idFuncionario"].ToString();
-                txt_nome_funcionario.Text = reader["nome"].ToString();
-                txt_cpf_funcionario.Text = reader["cpf"].ToString();
-                cbx_est_civil.Text = reader["estadoCivil"].ToString();
-                dtp_dt_nasc.Text = reader["dataNasc"].ToString();
-                cbx_cargo.Text = reader["cargo"].ToString();
+            //if (reader.Read())
+            //{
+            //    txt_idfuncionario.Text = reader["idFuncionario"].ToString();
+            //    txt_nome_funcionario.Text = reader["nome"].ToString();
+            //    txt_cpf_funcionario.Text = reader["cpf"].ToString();
+            //    cbx_est_civil.Text = reader["estadoCivil"].ToString();
+            //    dtp_dt_nasc.Text = reader["dataNasc"].ToString();
+            //    cbx_cargo.Text = reader["cargo"].ToString();
 
-            }
+            //}
 
-            btn_excluir.Enabled = true;
-            btn_atualizar.Enabled = true;
-            btn_cadastrar.Enabled = false;
-            txt_cpf_funcionario.Enabled = false;
+            //btn_excluir.Enabled = true;
+            //btn_atualizar.Enabled = true;
+            //btn_cadastrar.Enabled = false;
+            //txt_cpf_funcionario.Enabled = false;
 
 
         }
-        private void Cadastrar_funcionario_Load(object sender, EventArgs e)
+        //private void Cadastrar_funcionario_Load(object sender, EventArgs e)
+        //{
+
+        //    ConnectDatabase db = new ConnectDatabase();
+        //    MySqlConnection conn = db.connect();
+
+        //    MySqlCommand comm = conn.CreateCommand();
+        //    comm.CommandText = "SELECT * FROM tbfuncionario";
+
+        //    MySqlDataReader reader = comm.ExecuteReader();
+
+        //    List<string> funcionarios = new List<string>();
+
+        //    while (reader.Read())
+        //    {
+        //        string funcionario = $"{reader["idFunc"]}: {reader["nome"]}-{reader["cpf"]}      {reader["cargo"]}";
+        //        funcionarios.Add(funcionario);
+        //    }
+
+        //    lbox_funcionarios.Items.AddRange(funcionarios.ToArray());
+
+        //    reader.Close();
+        //    conn.Close();
+        //}
+        private void GerarGrade()
         {
+            listFuncionarios.Columns.Add("Id", 40).TextAlign = HorizontalAlignment.Center;
+            listFuncionarios.Columns.Add("Nome", 280).TextAlign = HorizontalAlignment.Center;
+            listFuncionarios.Columns.Add("Cargo", 200).TextAlign = HorizontalAlignment.Center;
+            listFuncionarios.Columns.Add("CPF", 165).TextAlign = HorizontalAlignment.Center;
+            listFuncionarios.View = View.Details;
 
-            ConnectDatabase db = new ConnectDatabase();
-            MySqlConnection conn = db.connect();
+            listFuncionarios.FullRowSelect = true;
+            listFuncionarios.GridLines = true;
+            listFuncionarios.CheckBoxes = true;
+        }
 
-            MySqlCommand comm = conn.CreateCommand();
-            comm.CommandText = "SELECT * FROM tbfuncionario";
-
-            MySqlDataReader reader = comm.ExecuteReader();
-
-            List<string> funcionarios = new List<string>();
-
-            while (reader.Read())
+        public void PopularGrade()
+        {
+            String[] item = new string[4];
+            ConnectDatabase connect = new ConnectDatabase();
+            var listFunc = queryFunc();
+            foreach (ListFunc funcionario in listFunc)
             {
-                string funcionario = $"{reader["idFunc"]}: {reader["nome"]}-{reader["cpf"]}      {reader["cargo"]}";
-                funcionarios.Add(funcionario);
+                item[0] = funcionario.Id.ToString();
+                item[1] = funcionario.Nome;
+                item[2] = funcionario.Cargo;
+                item[3] = funcionario.Cpf;
+                listFuncionarios.Items.Add(new ListViewItem(item));
             }
-
-            lbox_funcionarios.Items.AddRange(funcionarios.ToArray());
-
-            reader.Close();
-            conn.Close();
         }
 
 
@@ -600,10 +648,35 @@ namespace FolhaPagamento
             cbx_cargo.SelectedIndex = 0;
             cbx_est_civil.SelectedIndex = 0;
 
-            lbox_funcionarios.SelectedIndex = -1;
+            //lbox_funcionarios.SelectedIndex = -1;
             btn_excluir.Enabled = false;
         }
 
+        private List<ListFunc> queryFunc()
+        {
+            try
+            {
+                ConnectDatabase db = new ConnectDatabase();
+                MySqlCommand sqlCommand = new MySqlCommand("SELECT * FROM tbfuncionario", db.connect());
+                MySqlDataReader reader = sqlCommand.ExecuteReader();
+                var listFuncionarios = new List<ListFunc>();
 
+                while (reader.Read())
+                {
+
+                    if (reader["ativo"].ToString().Equals("True"))
+                    {
+                        listFuncionarios.Add(new ListFunc(reader["nome"].ToString(), reader["Cpf"].ToString(), reader["cargo"].ToString(), reader["idFunc"].ToString()));
+                    }
+
+                }
+                return listFuncionarios;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("error ===> ", ex);
+                return null;
+            }
+        }
     }
 }
