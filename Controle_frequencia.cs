@@ -116,7 +116,8 @@ namespace FolhaPagamento
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("aqui");
+                MessageBox.Show(ex.ToString());
             }
 
         }

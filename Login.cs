@@ -20,7 +20,6 @@ namespace FolhaPagamento
                 if (loginAuth(txtUsuario.Text, txtSenha.Text))
                 {
 
-                    MessageBox.Show("Usuário validado", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Menu menu = new Menu();
                     menu.Show();
                     this.Hide();

@@ -26,11 +26,21 @@ namespace FolhaPagamento
         {
             double salarioBruto, inss, irrf, salarioLiquido, descontos, adicionais;
 
-            salarioBruto = double.Parse(txt_salariobruto.Text.Replace("R$", ""));
+            try
+            {
+                salarioBruto = double.Parse(txt_salariobruto.Text.Replace("R$", ""));
 
-            descontos = double.Parse(txt_descontos.Text.Replace("R$", ""));
+                descontos = double.Parse(txt_descontos.Text.Replace("R$", ""));
 
-            adicionais = double.Parse(txt_adicionais.Text.Replace("R$", ""));
+                adicionais = double.Parse(txt_adicionais.Text.Replace("R$", ""));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Obrigatório o preenchimento dos campos.");
+                txt_adicionais.Focus();
+                return;
+            }
+
 
 
 
@@ -138,6 +148,8 @@ namespace FolhaPagamento
                 irrf = (salarioBase * 0.275) - 869.36;
             }
 
+
+
             salarioBruto = salarioBruto + adicionais - descontos;
             salarioLiquido = salarioBruto - inss - irrf;
 
@@ -149,14 +161,14 @@ namespace FolhaPagamento
             try
             {
 
-                comm.CommandText = "INSERT INTO tbdemonstrativopagamento(idFunc, inssfunc, irrfFunci, descontosFunc, adicionaisFunc, salarioLiqFunc, salaraioBrutoFunc, dataPagFunc) VALUES(@idFunc, @inssfunc, @irrfFunci, @descontosFunc, @adicionaisFunc, @salarioLiqFunc, @salaraioBrutoFunc, @dataPagFunc);";
+                comm.CommandText = "INSERT INTO tbdemonstrativopagamento(idFunc, inssfunc, irrfFunci, descontosFunc, adicionaisFunc, salarioLiqFunc, salarioBrutoFunc, dataPagFunc) VALUES(@idFunc, @inssfunc, @irrfFunci, @descontosFunc, @adicionaisFunc, @salarioLiqFunc, @salarioBrutoFunc, @dataPagFunc);";
                 comm.Parameters.AddWithValue("@idFunc", txt_nomefuncionariofolha.Text);
                 comm.Parameters.AddWithValue("@inssfunc", inss);
                 comm.Parameters.AddWithValue("@irrfFunci", irrf);
-                comm.Parameters.AddWithValue("@descontosFunc", txt_descontos.Text);
-                comm.Parameters.AddWithValue("@adicionaisFunc", txt_adicionais.Text);
+                comm.Parameters.AddWithValue("@descontosFunc", txt_descontos.Text.Replace("R$", ""));
+                comm.Parameters.AddWithValue("@adicionaisFunc", txt_adicionais.Text.Replace("R$", ""));
                 comm.Parameters.AddWithValue("@salarioLiqFunc", salarioLiquido);
-                comm.Parameters.AddWithValue("@salarioBrutoFunc", txt_salariobruto.Text);
+                comm.Parameters.AddWithValue("@salarioBrutoFunc", txt_salariobruto.Text.Replace("R$", ""));
                 comm.Parameters.AddWithValue("@dataPagFunc", dpt_datapagamento.Value);
                 comm.ExecuteNonQuery();
 
@@ -164,7 +176,8 @@ namespace FolhaPagamento
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("é aqui");
+                MessageBox.Show(ex.ToString());
             }
 
         }
