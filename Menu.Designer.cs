@@ -33,14 +33,16 @@
             btn_folhapagamento = new Button();
             btn_sair = new Button();
             painel_menu = new Panel();
+            panel1 = new Panel();
             SuspendLayout();
             // 
             // btn_cadastro_funcionario
             // 
             btn_cadastro_funcionario.BackColor = Color.Transparent;
-            btn_cadastro_funcionario.Location = new Point(8, 89);
+            btn_cadastro_funcionario.Location = new Point(9, 208);
+            btn_cadastro_funcionario.Margin = new Padding(3, 4, 3, 4);
             btn_cadastro_funcionario.Name = "btn_cadastro_funcionario";
-            btn_cadastro_funcionario.Size = new Size(164, 23);
+            btn_cadastro_funcionario.Size = new Size(187, 31);
             btn_cadastro_funcionario.TabIndex = 0;
             btn_cadastro_funcionario.Text = "Cadastro funcionário";
             btn_cadastro_funcionario.UseVisualStyleBackColor = false;
@@ -49,9 +51,10 @@
             // btn_frequencia
             // 
             btn_frequencia.BackColor = Color.Transparent;
-            btn_frequencia.Location = new Point(8, 227);
+            btn_frequencia.Location = new Point(9, 375);
+            btn_frequencia.Margin = new Padding(3, 4, 3, 4);
             btn_frequencia.Name = "btn_frequencia";
-            btn_frequencia.Size = new Size(164, 23);
+            btn_frequencia.Size = new Size(187, 31);
             btn_frequencia.TabIndex = 1;
             btn_frequencia.Text = "Controle de frequência";
             btn_frequencia.UseVisualStyleBackColor = false;
@@ -60,9 +63,10 @@
             // btn_folhapagamento
             // 
             btn_folhapagamento.BackColor = Color.Transparent;
-            btn_folhapagamento.Location = new Point(8, 151);
+            btn_folhapagamento.Location = new Point(9, 292);
+            btn_folhapagamento.Margin = new Padding(3, 4, 3, 4);
             btn_folhapagamento.Name = "btn_folhapagamento";
-            btn_folhapagamento.Size = new Size(164, 23);
+            btn_folhapagamento.Size = new Size(187, 31);
             btn_folhapagamento.TabIndex = 2;
             btn_folhapagamento.Text = "Folha de pagamento";
             btn_folhapagamento.UseVisualStyleBackColor = false;
@@ -70,9 +74,10 @@
             // 
             // btn_sair
             // 
-            btn_sair.Location = new Point(56, 484);
+            btn_sair.Location = new Point(64, 645);
+            btn_sair.Margin = new Padding(3, 4, 3, 4);
             btn_sair.Name = "btn_sair";
-            btn_sair.Size = new Size(76, 23);
+            btn_sair.Size = new Size(87, 31);
             btn_sair.TabIndex = 3;
             btn_sair.Text = "sair";
             btn_sair.UseVisualStyleBackColor = true;
@@ -84,25 +89,35 @@
             painel_menu.AutoSize = true;
             painel_menu.BackColor = SystemColors.AppWorkspace;
             painel_menu.BorderStyle = BorderStyle.Fixed3D;
-            painel_menu.Location = new Point(195, 10);
+            painel_menu.Location = new Point(223, 13);
             painel_menu.Margin = new Padding(1);
             painel_menu.Name = "painel_menu";
-            painel_menu.Size = new Size(733, 497);
+            painel_menu.Size = new Size(837, 661);
             painel_menu.TabIndex = 4;
             painel_menu.Paint += painel_menu_Paint;
             // 
+            // panel1
+            // 
+            panel1.BackgroundImage = Properties.Resources.logo_pim2;
+            panel1.Location = new Point(-9, 13);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(234, 159);
+            panel1.TabIndex = 5;
+            // 
             // Menu
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(938, 517);
+            BackColor = Color.FromArgb(64, 64, 64);
+            ClientSize = new Size(1072, 689);
+            Controls.Add(panel1);
             Controls.Add(painel_menu);
             Controls.Add(btn_sair);
             Controls.Add(btn_folhapagamento);
             Controls.Add(btn_frequencia);
             Controls.Add(btn_cadastro_funcionario);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Menu";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Menu";
@@ -117,5 +132,6 @@
         private Button btn_folhapagamento;
         private Button btn_sair;
         private Panel painel_menu;
+        private Panel panel1;
     }
 }

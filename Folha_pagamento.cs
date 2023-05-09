@@ -10,20 +10,60 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using iTextSharp;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace FolhaPagamento
 {
     public partial class Folha_pagamento : Form
     {
+
+
         public Folha_pagamento()
         {
             InitializeComponent();
             PopularGrade();
             GerarGrade();
+
         }
+        //public void ExportToPDF(DataGridView dataGridView)
+        //{
+        //    Document doc = new Document(PageSize.A4, 10, 10, 10, 10);
+        //    PdfWriter.GetInstance(doc, new FileStream(@"C:\Users\samue\source\repos\FPatt\demonstrativo.pdf", FileMode.Create));
+
+
+        //    PdfPTable pdfTable = new PdfPTable(dataGridView.Columns.Count);
+        //    pdfTable.DefaultCell.Padding = 3;
+        //    pdfTable.WidthPercentage = 100;
+        //    pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
+
+        //    foreach (DataGridViewColumn column in dataGridView.Columns)
+        //    {
+        //        PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
+        //        pdfTable.AddCell(cell);
+        //    }
+        //    foreach (DataGridViewRow row in dataGridView.Rows)
+        //    {
+        //        foreach (DataGridViewCell cell in row.Cells)
+        //        {
+        //            pdfTable.AddCell(cell.Value.ToString());
+        //        }
+        //    }
+        //    doc.Open();
+        //    doc.Add(pdfTable);
+        //    doc.Close();
+
+
+        //}
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+
             double salarioBruto, inss, irrf, salarioLiquido, descontos, adicionais;
 
             try
@@ -158,8 +198,12 @@ namespace FolhaPagamento
 
             ConnectDatabase db = new ConnectDatabase();
             MySqlCommand comm = db.connect().CreateCommand();
+
+
             try
+
             {
+
 
                 comm.CommandText = "INSERT INTO tbdemonstrativopagamento(idFunc, inssfunc, irrfFunci, descontosFunc, adicionaisFunc, salarioLiqFunc, salarioBrutoFunc, dataPagFunc) VALUES(@idFunc, @inssfunc, @irrfFunci, @descontosFunc, @adicionaisFunc, @salarioLiqFunc, @salarioBrutoFunc, @dataPagFunc);";
                 comm.Parameters.AddWithValue("@idFunc", txt_nomefuncionariofolha.Text);
@@ -172,7 +216,12 @@ namespace FolhaPagamento
                 comm.Parameters.AddWithValue("@dataPagFunc", dpt_datapagamento.Value);
                 comm.ExecuteNonQuery();
 
+
+
                 MessageBox.Show("Cadastro efetuado com sucesso.");
+
+
+
             }
             catch (Exception ex)
             {
@@ -180,6 +229,14 @@ namespace FolhaPagamento
                 MessageBox.Show(ex.ToString());
             }
 
+
+
+
+        }
+
+        private void ExportToPDF(object dataGridView)
+        {
+            throw new NotImplementedException();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -291,5 +348,8 @@ namespace FolhaPagamento
         {
 
         }
+
+
     }
+
 }

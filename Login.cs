@@ -30,7 +30,8 @@ namespace FolhaPagamento
                     MessageBox.Show("Preencha os campos. ", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     txtUsuario.Focus();
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
@@ -65,7 +66,7 @@ namespace FolhaPagamento
                 conexao.Close();
             }
             catch
-            { 
+            {
                 MessageBox.Show("Ocorreu algum erro, tente novamente", "Erro");
                 return false;
             }

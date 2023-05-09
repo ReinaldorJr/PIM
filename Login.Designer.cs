@@ -55,7 +55,7 @@
             txtUsuario.Location = new Point(154, 52);
             txtUsuario.Margin = new Padding(2);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(175, 31);
+            txtUsuario.Size = new Size(175, 27);
             txtUsuario.TabIndex = 1;
             // 
             // label1
@@ -64,7 +64,7 @@
             label1.Location = new Point(61, 52);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(76, 25);
+            label1.Size = new Size(62, 20);
             label1.TabIndex = 2;
             label1.Text = "Usuário:";
             label1.Click += label1_Click;
@@ -75,7 +75,7 @@
             label2.Location = new Point(61, 122);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(64, 25);
+            label2.Size = new Size(52, 20);
             label2.TabIndex = 4;
             label2.Text = "Senha:";
             // 
@@ -85,7 +85,7 @@
             txtSenha.Margin = new Padding(2);
             txtSenha.Name = "txtSenha";
             txtSenha.PasswordChar = '*';
-            txtSenha.Size = new Size(175, 31);
+            txtSenha.Size = new Size(175, 27);
             txtSenha.TabIndex = 3;
             // 
             // groupBox1
@@ -109,6 +109,7 @@
             // 
             AutoScaleMode = AutoScaleMode.None;
             AutoSize = true;
+            BackColor = Color.FromArgb(64, 64, 64);
             ClientSize = new Size(414, 351);
             Controls.Add(groupBox1);
             Controls.Add(btnLogin);

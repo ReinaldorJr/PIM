@@ -704,7 +704,7 @@ namespace FolhaPagamento
             comm.Parameters.AddWithValue("@cpf", listFuncionarios.SelectedItems[0].SubItems[1].Text);
             MySqlDataReader reader = comm.ExecuteReader();
 
-           
+
 
             while (reader.Read())
             {
@@ -724,7 +724,7 @@ namespace FolhaPagamento
 
                 listFuncionarios.Items.Add(item);
 
-               
+
 
                 // Seleciona o item adicionado na ListView
                 item.Selected = true;

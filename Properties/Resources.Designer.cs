@@ -63,6 +63,36 @@ namespace FolhaPagamento.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logo_pim {
+            get {
+                object obj = ResourceManager.GetObject("logo pim", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo_pim1 {
+            get {
+                object obj = ResourceManager.GetObject("logo pim1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo_pim2 {
+            get {
+                object obj = ResourceManager.GetObject("logo pim2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap lupa {
             get {
                 object obj = ResourceManager.GetObject("lupa", resourceCulture);
@@ -77,6 +107,16 @@ namespace FolhaPagamento.Properties {
             get {
                 object obj = ResourceManager.GetObject("png-transparent-magnifying-glass-computer-icons-magnifier-symbol-magnifying-glass" +
                         "-glass-text-magnifier-thumbnail", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap samuel_img {
+            get {
+                object obj = ResourceManager.GetObject("samuel img", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
